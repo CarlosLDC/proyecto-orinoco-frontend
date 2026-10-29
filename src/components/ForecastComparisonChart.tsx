@@ -61,6 +61,16 @@ export default function ForecastComparisonChart({
     setVisibleModels((prev) => ({ ...prev, [model]: !prev[model] }));
   };
 
+  const handleToggleTestPreds = () => {
+    setShowTestPreds((prev) => {
+      const next = !prev;
+      if (next && historyDays < 86) {
+        onChangeHistoryDays(86);
+      }
+      return next;
+    });
+  };
+
   const chartData = useMemo(() => {
     if (!timeline || timeline.length === 0) return [];
     return timeline.map((pt, idx) => {
@@ -149,14 +159,14 @@ export default function ForecastComparisonChart({
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setShowTestPreds((prev) => !prev)}
+            onClick={handleToggleTestPreds}
             className={`rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors ${
               showTestPreds
                 ? "border-sky-500/40 bg-sky-500/10 text-sky-500"
                 : "border-slate-200 text-slate-500 hover:text-slate-800 dark:border-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
             }`}
           >
-            Test Set
+            {showTestPreds ? "Ocultar Test Set" : "Superponer Test Set"}
           </button>
 
           <div className="flex items-center rounded-lg border border-slate-200 p-0.5 text-xs dark:border-slate-800">

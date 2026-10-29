@@ -87,7 +87,7 @@ export default function OrinocoDashboardPage() {
             <nav className="flex items-center rounded-lg bg-slate-100 p-0.5 text-xs dark:bg-slate-900">
               {[
                 { id: "forecast", label: "Pronóstico" },
-                { id: "metrics", label: "Métricas" },
+                { id: "metrics", label: "Test Set y Métricas" },
                 { id: "wave", label: "Propagación" },
                 { id: "didactic", label: "Guía" },
               ].map((tab) => (
