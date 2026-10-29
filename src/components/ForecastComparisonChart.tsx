@@ -62,13 +62,11 @@ export default function ForecastComparisonChart({
   };
 
   const handleToggleTestPreds = () => {
-    setShowTestPreds((prev) => {
-      const next = !prev;
-      if (next && historyDays < 86) {
-        onChangeHistoryDays(86);
-      }
-      return next;
-    });
+    const next = !showTestPreds;
+    setShowTestPreds(next);
+    if (next && historyDays < 86) {
+      onChangeHistoryDays(86);
+    }
   };
 
   const chartData = useMemo(() => {
